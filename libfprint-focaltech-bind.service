@@ -1,0 +1,14 @@
+[Unit]
+Description=Bind mount TOD libfprint (FocalTech FT9201) over system libfprint
+Before=fprintd.service
+DefaultDependencies=no
+After=local-fs.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/mount --bind /etc/libfprint-focaltech/libfprint-2.so.2.0.0 /usr/lib64/libfprint-2.so.2.0.0
+ExecStop=/bin/umount /usr/lib64/libfprint-2.so.2.0.0
+
+[Install]
+WantedBy=multi-user.target
