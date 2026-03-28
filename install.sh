@@ -76,22 +76,8 @@ patchelf --add-rpath "$INSTALL_DIR" "$INSTALL_DIR/libfprint-2.so.2.0.0"
 
 # --- Install systemd bind mount service ---
 echo "==> Installing systemd service..."
-cat > /etc/systemd/system/libfprint-focaltech-bind.service << 'EOF'
-[Unit]
-Description=Bind mount TOD libfprint (FocalTech FT9201) over system libfprint
-Before=fprintd.service
-DefaultDependencies=no
-After=local-fs.target
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/bin/mount --bind /etc/libfprint-focaltech/libfprint-2.so.2.0.0 /usr/lib64/libfprint-2.so.2.0.0
-ExecStop=/bin/umount /usr/lib64/libfprint-2.so.2.0.0
-
-[Install]
-WantedBy=multi-user.target
-EOF
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+cp "$SCRIPT_DIR/libfprint-focaltech-bind.service" /etc/systemd/system/libfprint-focaltech-bind.service
 
 systemctl daemon-reload
 systemctl enable libfprint-focaltech-bind.service
