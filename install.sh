@@ -11,6 +11,8 @@
 
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+
 # --- Config ---
 DEB_URL="https://github.com/ryenyuku/libfprint-ft9201/releases/download/1.94.4_20250219/libfprint-2-2_1.94.4+tod1-0ubuntu1.22.04.2_amd64_20250219.deb"
 DEB_SHA256="fe8c5ebb685718075e1fc04f10378c001e149b80c283d2891318a50e0588401a"
@@ -76,7 +78,6 @@ patchelf --add-rpath "$INSTALL_DIR" "$INSTALL_DIR/libfprint-2.so.2.0.0"
 
 # --- Install systemd bind mount service ---
 echo "==> Installing systemd service..."
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cp "$SCRIPT_DIR/libfprint-focaltech-bind.service" /etc/systemd/system/libfprint-focaltech-bind.service
 
 systemctl daemon-reload
