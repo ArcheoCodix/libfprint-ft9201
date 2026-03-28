@@ -30,7 +30,8 @@ The binary is never stored in this repo (proprietary). It is downloaded at insta
 sudo dnf install patchelf fprintd fprintd-pam   # or rpm-ostree install ...
 git clone https://github.com/ArcheoCodix/libfprint-ft9201
 cd libfprint-ft9201
-sudo ./install.sh
+./install.sh --dry-run   # preview what will be done
+sudo ./install.sh        # actual install
 ```
 
 Then enroll a finger:
