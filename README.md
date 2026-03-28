@@ -63,5 +63,4 @@ The binary is proprietary (Focal-systems.Corp). Do not redistribute it directly.
 ## Related projects
 
 - [ryenyuku/libfprint-ft9201](https://github.com/ryenyuku/libfprint-ft9201) — Arch/AUR packaging
-- [RheaAyase/libfprint-ft9201](https://github.com/RheaAyase/libfprint-ft9201) — stalled RPM attempt
 - [banianitc/ft9201-fingerprint-driver](https://github.com/banianitc/ft9201-fingerprint-driver) — open source kernel module (no fprintd integration)
